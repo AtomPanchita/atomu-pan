@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ===== สีและขนาดตัวอักษรของ Atomu-pan! (แก้ที่นี่ที่เดียว) ===== */
+@theme {
+  --color-brown: #6b4423;
+  --color-brown-soft: #a47551;
+  --color-crust: #d98c3f;
+  --color-cream: #fbf4e6;
+  --color-cream-deep: #f3e3c3;
+  --color-paper: #fffdf8;
+  --color-matcha: #b5cf8e;
+  --color-matcha-soft: #e4eed3;
+  --color-matcha-deep: #5f7f32;
+  --color-ink: #3e2a1a;
+  --color-blush: #f4a7a0;
+
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-display: var(--font-head), var(--font-body), sans-serif;
+
+  --text-display: clamp(2.6rem, 9vw, 4.75rem);
+  --text-display--line-height: 1.05;
+  --text-title: clamp(1.6rem, 5vw, 2.4rem);
+  --text-title--line-height: 1.25;
+  --text-lead: clamp(1.05rem, 2.6vw, 1.25rem);
+  --text-lead--line-height: 1.7;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* พื้นหลังลายจุดแบบกระดาษญี่ปุ่น */
+.dots {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--color-brown-soft) 22%, transparent) 1.2px,
+    transparent 1.2px
+  );
+  background-size: 18px 18px;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.bob {
+  animation: bob 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bob {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
