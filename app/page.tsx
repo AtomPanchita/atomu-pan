@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ChibiChef, ChibiMatcha, ChibiPan, ChibiPistachio, ChibiYeast } from "./chibi";
+import Process from "./process";
 
 // ใส่ LINE Official ID จริงของร้านตรงนี้ (มี @ นำหน้า)
 const LINE_ID = "@atomupan";
@@ -159,8 +160,16 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== ขั้นตอนทำขนมปัง ===== */}
+      <section id="process" className="dots px-4 py-20">
+        <div className="mx-auto max-w-5xl">
+          <SectionHeading en="How it's made" jp="塩パンができるまで" th="กว่าจะเป็นชิโอะปัง 1 ชิ้น" />
+          <Process />
+        </div>
+      </section>
+
       {/* ===== เมนูและราคา ===== */}
-      <section id="menu" className="dots px-4 py-20">
+      <section id="menu" className="bg-cream-deep/40 px-4 py-20">
         <div className="mx-auto max-w-5xl">
           <SectionHeading en="Menu" jp="メニュー" th="เมนูของเรา" />
           <div className="grid gap-6 md:grid-cols-2">

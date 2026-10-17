@@ -60,7 +60,51 @@ body {
   animation: bob 3.2s ease-in-out infinite;
 }
 
+
+/* ===== แอนิเมชันขั้นตอนทำขนมปัง ===== */
+.anim-knead, .anim-press, .anim-puff, .anim-stretch, .anim-roll, .anim-drop,
+.anim-heat, .anim-dial, .anim-glow, .anim-rise, .anim-serve, .anim-twinkle {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+.anim-knead { animation: knead 1.2s ease-in-out infinite; }
+.anim-press { animation: press 1.2s ease-in-out infinite; }
+.anim-puff { animation: puff 1.2s ease-out infinite; transform-origin: center; }
+.anim-stretch { animation: stretch 1.6s ease-in-out infinite; }
+.anim-roll { animation: roll 1.6s ease-in-out infinite; transform-origin: center; }
+.anim-drop { animation: drop 3.2s ease-in infinite; transform-origin: center; }
+.anim-heat { animation: heat 1.8s ease-in-out infinite; }
+.anim-dial { animation: dial 4s linear infinite; transform-box: view-box; }
+.anim-glow { animation: glow 1.6s ease-in-out infinite; }
+.anim-rise { animation: rise 4s ease-in-out infinite; }
+.anim-golden { animation: golden 4s ease-in-out infinite; }
+.anim-serve { animation: serve 3s cubic-bezier(.3,1.6,.5,1) infinite; }
+.anim-twinkle { animation: twinkle 1.5s ease-in-out infinite; transform-origin: center; }
+
+@keyframes knead { 0%,100% { transform: scale(1,1); } 50% { transform: scale(1.18,0.78); } }
+@keyframes press { 0%,100% { transform: translateY(0); } 50% { transform: translateY(12px); } }
+@keyframes puff { 0% { opacity: 0; transform: translateY(0) scale(0.6); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(-14px) scale(1.2); } }
+@keyframes stretch { 0%,100% { transform: scaleX(0.85); } 50% { transform: scaleX(1.08); } }
+@keyframes roll { 0%,100% { transform: translate(-18px, 0); } 50% { transform: translate(18px, 0); } }
+@keyframes drop { 0%,40% { transform: translateY(-10px); opacity: 0; } 55% { opacity: 1; } 80% { transform: translateY(52px); opacity: 1; } 100% { transform: translateY(52px); opacity: 0; } }
+@keyframes heat { 0%,100% { opacity: 0.2; transform: translateY(4px); } 50% { opacity: 1; transform: translateY(-3px); } }
+@keyframes dial { to { transform: rotate(360deg); } }
+@keyframes glow { 0%,100% { opacity: 0.55; } 50% { opacity: 0.9; } }
+@keyframes rise { 0% { transform: scale(0.75); } 60%,100% { transform: scale(1); } }
+@keyframes golden { 0% { fill: #f6e6c4; } 60%,100% { fill: var(--color-crust); } }
+@keyframes serve { 0% { transform: translateY(-40px); opacity: 0; } 25% { transform: translateY(0); opacity: 1; } 85% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(0); opacity: 0; } }
+@keyframes twinkle { 0%,100% { transform: scale(0.4) rotate(0deg); opacity: 0.3; } 50% { transform: scale(1) rotate(20deg); opacity: 1; } }
+
+/* ไฮไลต์ทีละขั้นวนไป 1 → 2 → 3 → 4 */
+.step-spot { animation: spot 8s ease-in-out infinite; }
+@keyframes spot {
+  0%, 25%, 100% { border-color: var(--color-cream-deep); box-shadow: none; }
+  5%, 20% { border-color: var(--color-matcha); box-shadow: 0 10px 24px -10px color-mix(in srgb, var(--color-matcha-deep) 45%, transparent); }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  [class*="anim-"],
+  .step-spot,
   .bob {
     animation: none;
   }
