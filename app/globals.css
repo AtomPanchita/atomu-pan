@@ -102,7 +102,40 @@ body {
   5%, 20% { border-color: var(--color-matcha); box-shadow: 0 10px 24px -10px color-mix(in srgb, var(--color-matcha-deep) 45%, transparent); }
 }
 
+/* ขนมปังดุ๊กดิ๊ก */
+.jiggle {
+  transform-origin: center bottom;
+  animation: jiggle 2.4s ease-in-out infinite;
+  cursor: pointer;
+}
+.jiggle:hover,
+.jiggle:active {
+  animation-duration: 0.6s;
+}
+.jiggle-pop {
+  transform-origin: center bottom;
+  animation: jiggle-pop 0.7s ease-out;
+}
+@keyframes jiggle {
+  0%, 60%, 100% { transform: scale(1, 1) rotate(0deg); }
+  10% { transform: scale(1.06, 0.94) rotate(-2deg); }
+  20% { transform: scale(0.96, 1.05) rotate(2deg); }
+  30% { transform: scale(1.04, 0.97) rotate(-1.5deg); }
+  40% { transform: scale(0.99, 1.02) rotate(1deg); }
+  50% { transform: scale(1, 1) rotate(0deg); }
+}
+@keyframes jiggle-pop {
+  0% { transform: scale(1, 1); }
+  20% { transform: scale(1.15, 0.85); }
+  40% { transform: scale(0.92, 1.1); }
+  60% { transform: scale(1.05, 0.96); }
+  80% { transform: scale(0.98, 1.02); }
+  100% { transform: scale(1, 1); }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .jiggle,
+  .jiggle-pop,
   [class*="anim-"],
   .step-spot,
   .bob {

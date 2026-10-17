@@ -1,10 +1,9 @@
 import Image from "next/image";
 import { ChibiChef, ChibiMatcha, ChibiPan, ChibiPistachio, ChibiYeast } from "./chibi";
 import Process from "./process";
+import Builder from "./builder";
+import { LINE_ID, LINE_URL } from "./site";
 
-// ใส่ LINE Official ID จริงของร้านตรงนี้ (มี @ นำหน้า)
-const LINE_ID = "@atomupan";
-const LINE_URL = `https://line.me/R/ti/p/${LINE_ID}`;
 
 const highlights = [
   {
@@ -30,11 +29,11 @@ const highlights = [
 const faqs = [
   {
     q: "สั่งซื้อได้ยังไง?",
-    a: "กดปุ่ม “อิชัชชัยมาเสะ” หรือปุ่ม LINE ในหน้านี้ แล้วทักแอดมินบอกจำนวนที่ต้องการได้เลย",
+    a: "เลือกไส้และท็อปปิ้งเองได้ที่ส่วน “ออกแบบชิโอะปังของคุณ” แล้วกดสั่งทาง LINE ระบบจะพิมพ์ออเดอร์ให้ แค่กดส่งพร้อมที่อยู่",
   },
   {
-    q: "มีบริการจัดส่งไหม หรือต้องมารับที่ร้าน?",
-    a: "สอบถามรอบจัดส่งและจุดรับสินค้าได้ทาง LINE Official แอดมินจะแจ้งรายละเอียดให้ค่ะ",
+    q: "ส่งถึงบ้านไหม?",
+    a: "ส่งถึงบ้านค่ะ ค่าส่งคิดตามระยะทาง แอดมินจะแจ้งยอดรวมใน LINE ก่อนยืนยันออเดอร์ หรือจะเลือกมารับเองก็ได้",
   },
   {
     q: "ชิโอะปังเก็บได้นานแค่ไหน?",
@@ -116,8 +115,8 @@ export default function Home() {
                 อิชัชชัยมาเสะ
                 <span aria-hidden="true">→</span>
               </a>
-              <a href="#menu" className="px-4 py-2 text-brown-soft underline decoration-matcha decoration-2 underline-offset-4 hover:text-brown">
-                ดูเมนูและราคา
+              <a href="#custom" className="px-4 py-2 text-brown-soft underline decoration-matcha decoration-2 underline-offset-4 hover:text-brown">
+                ออกแบบไส้เอง ✨
               </a>
             </div>
           </div>
@@ -133,10 +132,10 @@ export default function Home() {
                 width={480}
                 height={310}
                 priority
-                className="h-auto w-full"
+                className="jiggle h-auto w-full"
               />
             </div>
-            <ChibiPan className="bob absolute -right-3 -bottom-8 h-20 w-28 drop-shadow md:-right-8" />
+            <ChibiPan className="jiggle absolute -right-3 -bottom-8 h-20 w-28 drop-shadow md:-right-8" />
             <ChibiMatcha className="bob absolute -bottom-10 -left-4 h-20 w-20 drop-shadow [animation-delay:0.8s]" />
           </div>
         </div>
@@ -175,7 +174,7 @@ export default function Home() {
           <div className="grid gap-6 md:grid-cols-2">
             <article className="overflow-hidden rounded-3xl bg-paper shadow-lg shadow-brown/10">
               <div className="bg-cream-deep/50 p-6">
-                <Image src="/shio-pan.jpg" alt="ชิโอะปังไส้พิสตาชิโอ" width={480} height={310} className="mx-auto h-auto w-full max-w-xs" />
+                <Image src="/shio-pan.jpg" alt="ชิโอะปังไส้พิสตาชิโอ" width={480} height={310} className="jiggle mx-auto h-auto w-full max-w-xs [animation-delay:0.6s]" />
               </div>
               <div className="p-6">
                 <p className="text-xs tracking-widest text-matcha-deep">ピスタチオ塩パン</p>
@@ -221,6 +220,17 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== ออกแบบไส้เอง ===== */}
+      <section id="custom" className="dots px-4 py-20">
+        <div className="mx-auto max-w-5xl">
+          <SectionHeading en="Made to order" jp="自分だけの塩パン" th="ออกแบบชิโอะปังของคุณ" />
+          <p className="-mt-4 mb-10 text-center text-ink/80">
+            เลือกไส้ เลือกท็อปปิ้งเองได้เลย เชฟอบสดให้ตามออเดอร์ <strong className="text-brown">พร้อมส่งถึงบ้าน</strong> 🛵
+          </p>
+          <Builder />
+        </div>
+      </section>
+
       {/* ===== คำถามที่พบบ่อย ===== */}
       <section className="bg-paper px-4 py-20">
         <div className="mx-auto max-w-2xl">
@@ -246,7 +256,7 @@ export default function Home() {
         <div className="mx-auto max-w-xl rounded-[2.5rem] border-4 border-paper bg-brown px-6 py-12 text-center text-paper shadow-xl shadow-brown/20">
           <div className="flex justify-center gap-2">
             <ChibiChef className="h-20 w-20" />
-            <ChibiPan className="h-20 w-28" />
+            <ChibiPan className="jiggle h-20 w-28" />
           </div>
           <p className="mt-4 font-display text-sm tracking-[0.3em] text-matcha uppercase">Contact · お問い合わせ</p>
           <h2 className="mt-2 font-display text-title font-semibold">ติดต่อเรา</h2>
